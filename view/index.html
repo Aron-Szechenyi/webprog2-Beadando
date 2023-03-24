@@ -1,0 +1,52 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/view/stilus.css">
+    <title>{{title}}</title>
+</head>
+<body>
+
+
+{% header %}
+
+
+<!--kép-->
+<div class="fooldal">
+    <!--linkek-->
+    <div class="infok">
+        <h2>Információk</h2>
+        <ul><b>Nyitvatartás:</b>
+            <li>Hétfő: 12:00-23:30</li>
+            <li>Kedd: 12:00-23:30</li>
+            <li>Szerda: 12:00-23:30</li>
+            <li>Csütörtök: 12:00-23:30</li>
+            <li>Péntek: 12:00-24:00</li>
+            <li>Szombat: 12:00-24:00</li>
+            <li>Vasárnap: 12:00-23:30</li>
+        </ul>
+        <p><b>Online Rendelés</b></p>
+        <p><b>Cím:</b> 1111 Budapest, Kitalált utca 23.</p>
+    </div>
+
+    <input type="hidden" id="session" name="session">
+    <button type="submit" class="btn" name="">Kilépés</button>
+    <h2>Bejelentkezés</h2>
+    <div class="bejelent">
+        <form method="post" action="index.php">
+            <div class="">
+                <label for="username"><b>Felhasználónév</label></b><br>
+                <input type="text" class="belep" name="username" value="" maxlength="30">
+            </div>
+            <div class="">
+                <label for=password><b>Jelszó</b></label><br>
+                <input type="password" class="belep" name="password" value="" maxlength="50">
+            </div>
+            <div class="">
+                <button type="submit" class="btn" name="">Bejelentkezés</button>
+            </div>
+    </div>
+</div>
+
+{% footer %}
+
+</body>
+</html>

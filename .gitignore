@@ -1,0 +1,4 @@
+composer.*
+*.sql
+vendor/*
+.idea

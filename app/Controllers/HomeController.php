@@ -22,4 +22,12 @@ class HomeController extends BaseController
     {
        $this->render('index', ['title'=>"πzzéria"]);
     }
+
+    #[Route('/','POST')]
+    public function postTest(array $params):void
+    {
+        print "<h1>POST EXECUTED</h1>";
+        print_r($params);
+        $this->render('index', ['title'=>"πzzéria"]);
+    }
 }

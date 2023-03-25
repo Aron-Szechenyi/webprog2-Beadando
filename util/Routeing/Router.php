@@ -22,9 +22,9 @@ class Router
     public function registerControllers(array $controllers): void
     {
         foreach($controllers as $controller) {
-            if(!class_exists($controller)){
+            if(!class_exists($controller))
                 break;
-            }
+
             $reflectionController = new ReflectionClass($controller);
 
             foreach($reflectionController->getMethods() as $method) {
@@ -52,9 +52,9 @@ class Router
                     $reflectionClass = new ReflectionClass($controller);
                     $instance = $reflectionClass->newInstance();
 
-                    call_user_func_array([$instance, $method], []);
+                    call_user_func_array([$instance, $method],array($_REQUEST));
+                    exit();
                 }
-
             }
         }
         header("HTTP/1.0 404 Not Found");

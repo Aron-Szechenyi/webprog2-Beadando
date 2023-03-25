@@ -38,7 +38,7 @@ class View
         eval(' ?>'.$context.'<?php ');
     }
 
-    private function getPath($filename):string
+    private function getPath(string $filename):string
     {
         $filename = trim($filename);
         return "view/$filename.html";

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-
 use Util\Controller\BaseController;
 use Util\Routeing\Route;
 
@@ -16,11 +15,10 @@ class HomeController extends BaseController
 
     }
 
-
     #[Route('/')]
     public function index() :void
     {
-       $this->render('index', ['title'=>"πzzéria"]);
+       $this->render('index', ['title'=>"test"]);
     }
 
     #[Route('/','POST')]
@@ -28,6 +26,6 @@ class HomeController extends BaseController
     {
         print "<h1>POST EXECUTED</h1>";
         print_r($params);
-        $this->render('index', ['title'=>"πzzéria"]);
+        $this->render('index', ['title'=>"test"]);
     }
 }

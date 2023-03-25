@@ -1,44 +1,25 @@
-<html>
+<!doctype html>
+<html lang="hu">
 <head>
-    <link rel="stylesheet" href="/view/stilus.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{title}}</title>
 </head>
 <body>
 
-
 {% header %}
 
-<div class="fooldal">
-    <div class="infok">
-        <h2>Információk</h2>
-        <ul>
-            <b>Nyitvatartás</b>
-            <li>Hétfő: 12:00-23:30</li>
-            <li>Kedd: 12:00-23:30</li>
-            <li>Szerda: 12:00-23:30</li>
-            <li>Csütörtök: 12:00-23:30</li>
-            <li>Péntek: 12:00-24:00</li>
-            <li>Szombat: 12:00-24:00</li>
-            <li>Vasárnap: 12:00-23:30</li>
-        </ul>
-    </div>
-        <h2>Bejelentkezés</h2>
-        <div class="bejelent">
-            <form method="post" action="/">
-                <div class="">
-                    <label for="username"><b>Felhasználónév</b></label><br>
-                    <input type="text" class="belep" name="username" value="" maxlength="30"/>
-                </div>
-                <div class="">
-                    <label for=password><b>Jelszó</b></label><br>
-                    <input type="password" class="belep" name="password" value="" maxlength="50"/>
-                </div>
-                <div class="">
-                    <button type="submit" class="btn" name="">Bejelentkezés</button>
-                </div>
-            </form>
-        </div>
-</div>
+<h4>main</h4>
+
+<form action="/" method="post" >
+    <input type="text" name="param1" value="" maxlength="30"/>
+    <input type="text" name="param2" value="" maxlength="30"/>
+    <input type="text" name="param3" value="" maxlength="30"/>
+    <button type="submit" class="btn" name="">post test</button>
+</form>
+
 
 {% footer %}
 

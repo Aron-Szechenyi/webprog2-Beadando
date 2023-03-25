@@ -14,9 +14,10 @@ class HomeController extends BaseController
     {
 
     }
+
     #[Route('/')]
-    public function index() :void
+    public function index(): void
     {
-       $this->render('index', []);
+        $this->render('index', []);
     }
 }

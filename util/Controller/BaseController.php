@@ -8,9 +8,9 @@ use Util\View\View;
 
 class BaseController
 {
-    public function render(string $view_name, array $params = [],array $booleans = []): void
+    public function render(string $view_name, array $params = [], array $booleans = []): void
     {
         $view = new View();
-        $view->render($view_name, $params,$booleans);
+        $view->render($view_name, $params, $booleans);
     }
 }

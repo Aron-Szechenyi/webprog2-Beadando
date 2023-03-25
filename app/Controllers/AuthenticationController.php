@@ -16,21 +16,18 @@ class AuthenticationController extends BaseController
     }
 
     #[Route('/login')]
-    public function index() :void
+    public function index(): void
     {
-       $this->render('authentication', []);
+        $this->render('authentication', []);
     }
 
-    #[Route('/login','POST')]
-    public function postTest(array $params):void
+    #[Route('/login', 'POST')]
+    public function postTest(array $params): void
     {
         print "<h1>POST EXECUTED</h1>";
         print_r($params);
         $this->render('authentication.html', []);
     }
-
-
-
 
 
 }

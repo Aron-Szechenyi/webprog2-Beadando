@@ -14,18 +14,9 @@ class HomeController extends BaseController
     {
 
     }
-
     #[Route('/')]
     public function index() :void
     {
-       $this->render('index', ['title'=>"test"]);
-    }
-
-    #[Route('/','POST')]
-    public function postTest(array $params):void
-    {
-        print "<h1>POST EXECUTED</h1>";
-        print_r($params);
-        $this->render('index', ['title'=>"test"]);
+       $this->render('index', []);
     }
 }

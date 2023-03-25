@@ -4,7 +4,9 @@
  */
 declare(strict_types=1);
 
+use App\Controllers\AuthenticationController;
 use App\Controllers\HomeController;
+use App\Controllers\OrderController;
 use Util\Routeing\Router;
 
 include_once "vendor/autoload.php";
@@ -12,7 +14,9 @@ include_once "vendor/autoload.php";
 $router = new Router();
 $router->registerControllers(
     [
-        HomeController::class
+        HomeController::class,
+        OrderController::class,
+        AuthenticationController::class
     ]
 );
 

@@ -22,12 +22,16 @@ class BaseModel
         $className = get_class($this);
         $className = explode('\\', $className);
         $className = end($className);
-        //                                  User        [asd->asd,asd->asd]
-        return DB::getInstance()->insert($className, $this->getParamsArray());
+
+        return (int)DB::getInstance()->insert($className, $this->getParamsArray());
     }
 
     private function getParamsArray(): array
     {
+        /*
+         * @TODO: rewrite this
+         */
+
         $string = explode("array", var_export($this, true))[1];
         $string[strlen($string) - 1] = ' ';
         $string[strlen($string) - 4] = ' ';
@@ -36,6 +40,7 @@ class BaseModel
 
         $string = explode(",", $string);
         $array = [];
+
 
         foreach ($string as $s) {
             $s = explode("=>", $s);

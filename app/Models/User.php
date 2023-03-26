@@ -12,23 +12,31 @@ class User extends BaseModel
 {
     private int $id;
     private string $userName;
-    private string $email;
     private string $password;
+    private string $email;
 
     public function __construct(string $userName, string $password, string|null $email = null, int|null $id = null)
     {
         $this->userName = $userName;
         $this->password = $password;
-        if (!empty($this->email))
+        if (!empty($email))
             $this->email = $email;
-        if (!empty($this->id))
+        if (!empty($id))
             $this->id = $id;
     }
 
     public function register(): bool
     {
+        if (DB::getInstance()->query('select count(*) c from user where username=? ', [$this->userName])->first()->c > 0) {
+            return false;
+        }
+
         $this->password = Crypto::SHA256($this->password);
         $this->id = $this->Create();
+
+
+        echo $this->id;
+
 
         if ($this->id == null)
             return false;

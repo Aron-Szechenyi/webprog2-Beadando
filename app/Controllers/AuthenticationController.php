@@ -21,7 +21,17 @@ class AuthenticationController extends BaseController
     #[Route('/register', 'POST')]
     public function registerPost(array $params): void
     {
-        $this->render('authentication', []);
+        $this->user = new User($params['username'], $params['password'], $params['email']);
+        if ($this->user->register())
+            $this->render('authentication', ['method' => 'Successful registration'], ['login' => false]);
+        else
+            $this->render('authentication', ['method' => 'This username is already in use'], ['login' => false]);
+    }
+
+    #[Route('/register')]
+    public function register(): void
+    {
+        $this->render('authentication', ['method' => 'Register'], ['login' => false]);
     }
 
     #[Route('/login', 'POST')]
@@ -38,11 +48,5 @@ class AuthenticationController extends BaseController
     public function login(): void
     {
         $this->render('authentication', ['method' => 'Login'], ['login' => true]);
-    }
-
-    #[Route('/register')]
-    public function register(): void
-    {
-        $this->render('authentication', ['method' => 'Register'], ['login' => false]);
     }
 }

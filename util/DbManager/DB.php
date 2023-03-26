@@ -180,10 +180,6 @@ class DB
      */
     public function insert($table, $fields = array(), $key = 'INSERT')
     {
-        echo "field:<br>";
-        print_r($fields);
-        echo "field:<br>";
-
         $keys = array_keys($fields);
         $values = null;
         $x = 1;
@@ -196,6 +192,8 @@ class DB
             $x++;
         }
         $sql = $key . " INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
+
+
         return $this->query($sql, $fields);
     }
 

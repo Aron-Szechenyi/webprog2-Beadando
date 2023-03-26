@@ -1,5 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
+namespace Util\DbManager;
+
+use PDO;
+
 class DB
 {
     public static $instance = [];
@@ -14,7 +20,7 @@ class DB
     private function __construct($db = 'mysql')
     {
         try {
-            $this->_sql = new PDO('mysql:host=localhost;dbname=dbname', 'root', 'passwd',
+            $this->_sql = new PDO('mysql:host=localhost;dbname=a3kwh7', 'root', '',
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_TIMEOUT => "5"));
             $this->_query = $this->_sql->prepare("SET NAMES utf8");
             $this->_query->execute();
@@ -174,6 +180,10 @@ class DB
      */
     public function insert($table, $fields = array(), $key = 'INSERT')
     {
+        echo "field:<br>";
+        print_r($fields);
+        echo "field:<br>";
+
         $keys = array_keys($fields);
         $values = null;
         $x = 1;

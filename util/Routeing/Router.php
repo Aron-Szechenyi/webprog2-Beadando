@@ -50,9 +50,13 @@ class Router
 
                 if ($k === $cleanRoute && $requestMethod === $key && class_exists($controller)) {
 
+                    echo 'debug in Router.php:<br>';
+                    if (!empty($_REQUEST))
+                        print_r($_REQUEST);
+                    echo '<br>';
+
                     $reflectionClass = new ReflectionClass($controller);
                     $instance = $reflectionClass->newInstance();
-
                     call_user_func_array([$instance, $method], array($_REQUEST));
                     exit();
                 }

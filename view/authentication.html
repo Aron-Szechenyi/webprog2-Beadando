@@ -17,10 +17,26 @@
         <div class="container">
             {% header %}
             <div class="bunner">
-                <div class="col-1">
-                    <h2>QUALITY<br>πzza</h2>
-                    <p>3,14159265</p>
-                </div>
+                <h3>{{method}}</h3>
+                {! if login == true !}
+                <form action="/login" method="post">
+                    <label for="username">Username:</label><br>
+                    <input id="username" name="username" type="text"><br>
+                    <label for="password2">Password:</label><br>
+                    <input id="password2" name="password" type="password"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+                {! else !}
+                <form action="/register" method="post">
+                    <label for="uname">Username:</label><br>
+                    <input id="uname" name="username" type="text"><br>
+                    <label for="password">Password:</label><br>
+                    <input id="password" name="password" type="password"><br>
+                    <label for="email">Email:</label><br>
+                    <input id="email" name="email" type="email"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+                {! endif !}
             </div>
         </div>
     </div>

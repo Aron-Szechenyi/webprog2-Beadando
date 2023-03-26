@@ -11,6 +11,11 @@ use Util\Routeing\Router;
 
 include_once "vendor/autoload.php";
 
+session_start();
+if (!isset($_SESSION['logged'])) {
+    $_SESSION['logged'] = false;
+}
+
 $router = new Router();
 $router->registerControllers(
     [

@@ -9,21 +9,8 @@ class BaseModel
     protected function Save(): bool
     {
         $className = get_class($this);
-        $params = get_class_vars($className);
+        $params = $this->getParamsArray();
         return DB::getInstance()->update($className, $params['id'], $params);
-    }
-
-
-    /**
-     * @return int Az adott rekord IDját dobja vissza
-     */
-    protected function Create(): int
-    {
-        $className = get_class($this);
-        $className = explode('\\', $className);
-        $className = end($className);
-
-        return (int)DB::getInstance()->insert($className, $this->getParamsArray());
     }
 
     private function getParamsArray(): array
@@ -51,5 +38,17 @@ class BaseModel
         }
 
         return $array;
+    }
+
+    /**
+     * @return int Az adott rekord IDját dobja vissza
+     */
+    protected function Create(): int
+    {
+        $className = get_class($this);
+        $className = explode('\\', $className);
+        $className = end($className);
+
+        return (int)DB::getInstance()->insert($className, $this->getParamsArray());
     }
 }

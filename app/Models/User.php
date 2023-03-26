@@ -34,10 +34,6 @@ class User extends BaseModel
         $this->password = Crypto::SHA256($this->password);
         $this->id = $this->Create();
 
-
-        echo $this->id;
-
-
         if ($this->id == null)
             return false;
 
@@ -49,8 +45,22 @@ class User extends BaseModel
         $params['password'] = Crypto::SHA256($params['password']);
 
         $tmp = DB::getInstance()->query('select count(*) c from user where username=? and password=?', $params)->first()->c;
-        if ($tmp > 0)
-            return true;
-        return false;
+        if ($tmp == 0)
+            return false;
+
+        $_SESSION['logged'] = true;
+        $_SESSION['role'] = $this->getUserRole($params['username']);
+        return true;
+    }
+
+    public function getUserRole(string $username): int
+    {
+        $role = (DB::getInstance()->query("select role from user where username=?", [$username])->first())->role;
+
+        return match ($role) {
+            'admin' => 0,
+            'user' => 1,
+            default => -1,
+        };
     }
 }

@@ -36,11 +36,14 @@ class View
         }
 
         foreach ($booleans as $key => $value) {
-
-            $context = preg_replace('/\{! if (.*) !}/', '<?php if ($value) : ?>', $context);
+            if ($value)
+                $context = preg_replace('/\{! if(.*?)' . $key . ' (.*?)!}/', '<?php if (true) : ?>', $context);
+            else
+                $context = preg_replace('/\{! if(.*?)' . $key . ' (.*?)!}/', '<?php if (false) : ?>', $context);
             $context = preg_replace('/\{! else !}/', '<?php else : ?>', $context);
             $context = preg_replace('/\{! endif !}/', '<?php endif; ?>', $context);
         }
+        
         eval(' ?>' . $context . '<?php ');
     }
 

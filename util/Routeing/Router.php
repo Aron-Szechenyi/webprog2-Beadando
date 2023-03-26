@@ -53,7 +53,10 @@ class Router
                     echo 'debug in Router.php:<br>';
                     if (!empty($_REQUEST))
                         print_r($_REQUEST);
-                    echo '<br>';
+                    echo '<br><pre>';
+                    echo "session_vars:<br>";
+                    print_r($_SESSION);
+                    echo "</pre>";
 
                     $reflectionClass = new ReflectionClass($controller);
                     $instance = $reflectionClass->newInstance();

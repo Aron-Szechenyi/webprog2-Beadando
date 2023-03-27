@@ -20,6 +20,22 @@ class View
 
         $context = file_get_contents($path);
 
+        $context = $this->getSubTemplates($context);
+
+        $context = $this->bindKeyValuePairs($key_values, $context);
+        $context = $this->bindBooleans($booleans, $context);
+
+        eval(' ?>' . $context . '<?php ');
+    }
+
+    private function getPath(string $filename): string
+    {
+        $filename = trim($filename);
+        return "view/$filename.html";
+    }
+
+    public function getSubTemplates(string $context): string
+    {
         $sections = [];
         preg_match_all("/{%(.*?)%}/", $context, $sections); // this provides a matrix which contains the whole text, and the text in between the tags
 
@@ -30,16 +46,25 @@ class View
             $tag[$i] = '{' . $tag[$i] . '}'; //single curly braces get swallowed with the evaluation of preg_math_all, so had to rewrite them
             $context = preg_replace($tag[$i], $subContext, $context);    //   {% template_in_template %}
         }
+        return $context;
+    }
 
+    private function bindKeyValuePairs(array $key_values, string $context): string
+    {
         foreach ($key_values as $key => $value) {
             $context = preg_replace('/\{{' . $key . '}}/', $value, $context); // {{ value_to_be_written_out }}
         }
 
+        return $context;
+    }
+
+    private function bindBooleans(array $booleans, string $context): string
+    {
         /*
-         * no clue how to evaluate something like this {! foo>3 !}
-         * cuz only the last $key=>$value are in reach for the eval()
-         * so this is good for now
-         */
+                 * no clue how to evaluate something like this {! foo>3 !}
+                 * cuz only the last $key=>$value are in reach for the eval()
+                 * so this is good for now
+                 */
         foreach ($booleans as $key => $value) {
             if ($value)
                 $context = preg_replace('/\{! if(.*?)' . $key . ' (.*?)!}/', '<?php if (true) : ?>', $context);
@@ -48,14 +73,7 @@ class View
             $context = preg_replace('/\{! else !}/', '<?php else : ?>', $context);
             $context = preg_replace('/\{! endif !}/', '<?php endif; ?>', $context);
         }
-
-        eval(' ?>' . $context . '<?php ');
-    }
-
-    private function getPath(string $filename): string
-    {
-        $filename = trim($filename);
-        return "view/$filename.html";
+        return $context;
     }
 
 }

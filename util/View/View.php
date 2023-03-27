@@ -32,9 +32,14 @@ class View
         }
 
         foreach ($key_values as $key => $value) {
-            $context = preg_replace('/\{{' . $key . '}}/', $value, $context); // {{value to be written out}}
+            $context = preg_replace('/\{{' . $key . '}}/', $value, $context); // {{ value_to_be_written_out }}
         }
 
+        /*
+         * no clue how to evaluate something like this {! foo>3 !}
+         * cuz only the last $key=>$value are in reach for the eval()
+         * so this is good for now
+         */
         foreach ($booleans as $key => $value) {
             if ($value)
                 $context = preg_replace('/\{! if(.*?)' . $key . ' (.*?)!}/', '<?php if (true) : ?>', $context);
@@ -43,7 +48,7 @@ class View
             $context = preg_replace('/\{! else !}/', '<?php else : ?>', $context);
             $context = preg_replace('/\{! endif !}/', '<?php endif; ?>', $context);
         }
-        
+
         eval(' ?>' . $context . '<?php ');
     }
 

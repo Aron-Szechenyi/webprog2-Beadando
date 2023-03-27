@@ -19,7 +19,18 @@ CREATE TABLE IF NOT EXISTS `User`
     `Password` varchar(1024) NOT NULL,
     `Email`    varchar(1024) NOT NULL,
     `Role`     varchar(1024) DEFAULT 'user',
+    PRIMARY KEY (ID)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 
+-- Pizzas table
+CREATE TABLE IF NOT EXISTS `Pizza`
+(
+    `ID`          int NOT NULL AUTO_INCREMENT,
+    `NAME`        varchar(1024) DEFAULT NULL,
+    `DESCRIPTION` varchar(1024) DEFAULT NULL,
+    `PICTURE`     varchar(1024) DEFAULT NULL,
+    `PRICE`       int(6)        DEFAULT NULL,
     PRIMARY KEY (ID)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
@@ -34,4 +45,11 @@ VALUES ('root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b
 
 INSERT INTO `User` (`Username`, `Password`, `Email`)
 VALUES ('user', '04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb', 'test@test.test');
+
+
+INSERT INTO `Pizza` (`NAME`, `DESCRIPTION`, `PICTURE`, `PRICE`)
+VALUES ('Pizza1', 'Ez sajtos', 'pizza.png', 1400),
+       ('Pizza2', 'Ezen van tojás', 'pizza.png', 1400),
+       ('Pizza3', 'Ez kolbászos', 'pizza.png', 14000),
+       ('Pizza4', 'Ez nagyon finom', 'pizza.png', 400);
 

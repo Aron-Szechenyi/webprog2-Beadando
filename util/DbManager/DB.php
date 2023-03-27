@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Util\DbManager;
 
 use PDO;
+use Util\Globals;
 
 class DB
 {
@@ -20,7 +21,11 @@ class DB
     private function __construct($db = 'mysql')
     {
         try {
-            $this->_sql = new PDO('mysql:host=localhost;dbname=a3kwh7', 'root', '',
+            $dbname = Globals::$DB_NAME;
+            $usernameDb = Globals::$DB_USERNAME;
+            $passwordDb = Globals::$DB_PASSWORD;
+
+            $this->_sql = new PDO("mysql:host=localhost;dbname=$dbname", "$usernameDb", "$passwordDb",
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_TIMEOUT => "5"));
             $this->_query = $this->_sql->prepare("SET NAMES utf8");
             $this->_query->execute();

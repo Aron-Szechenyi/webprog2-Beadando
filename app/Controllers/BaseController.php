@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Util\Controller;
+namespace App\Controllers;
 
 use Util\View\View;
 
@@ -11,8 +11,14 @@ class BaseController
     public function render(string $view_name, array $params = [], array $booleans = []): void
     {
         $booleans += ['logged' => $_SESSION['logged']];
+        $booleans += ['isAdmin' => $_SESSION['isAdmin']];
         $view = new View();
         $view->render($view_name, $params, $booleans);
+    }
+
+    public function redirectToUrl(string $url, array $params = [], array $booleans = []): void
+    {
+        header("Location: $url");
     }
 
 

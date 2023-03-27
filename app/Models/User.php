@@ -49,18 +49,17 @@ class User extends BaseModel
             return false;
 
         $_SESSION['logged'] = true;
-        $_SESSION['role'] = $this->getUserRole($params['username']);
+        $_SESSION['isAdmin'] = $this->isAdmin($params['username']);
         return true;
     }
 
-    public function getUserRole(string $username): int
+    public function isAdmin(string $username): bool
     {
         $role = (DB::getInstance()->query("select role from user where username=?", [$username])->first())->role;
 
-        return match ($role) {
-            'admin' => 0,
-            'user' => 1,
-            default => -1,
-        };
+        if ($role == 'admin')
+            return true;
+
+        return false;
     }
 }

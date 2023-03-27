@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\User;
-use Util\Controller\BaseController;
 use Util\Routeing\Route;
 
 class AuthenticationController extends BaseController
@@ -48,5 +47,15 @@ class AuthenticationController extends BaseController
     public function login(): void
     {
         $this->render('authentication', ['method' => 'Login'], ['login' => true]);
+    }
+
+    #[Route('/logout', 'POST')]
+    public function logout(array $params): void
+    {
+        setcookie(session_id(), "", time() - 3600);
+        session_destroy();
+        session_write_close();
+
+        $this->redirectToUrl('/');
     }
 }

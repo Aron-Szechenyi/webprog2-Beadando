@@ -16,7 +16,18 @@
     <div class="container">
         {% header %}
         <div class="bunner">
-          
+            <h2>{{method}}</h2><br>
+            <form action="/addNewItem" method="POST">
+                <label for="name">Name:</label><br>
+                <input id="name" name="name" required="required" type="text"> <br>
+                <label for="description">Description:</label><br>
+                <input id="description" name="description" required="required" type="text"> <br>
+                <label for="picture">Picture(pizza.png):</label><br>
+                <input id="picture" name="picture" required="required" type="text" value="pizza.png"> <br>
+                <label for="price">Price</label><br>
+                <input id="price" min="0" name="price" required="required" step="100" type="number"> <br> <br>
+                <input Value="Add!" type="submit">
+            </form>
         </div>
     </div>
 </div>

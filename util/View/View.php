@@ -34,7 +34,7 @@ class View
         return "view/$filename.html";
     }
 
-    public function getSubTemplates(string $context): string
+    private function getSubTemplates(string $context): string
     {
         $sections = [];
         preg_match_all("/{%(.*?)%}/", $context, $sections); // this provides a matrix which contains the whole text, and the text in between the tags
@@ -75,5 +75,4 @@ class View
         }
         return $context;
     }
-
 }

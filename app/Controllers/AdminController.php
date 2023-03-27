@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Models\Pizza;
 use Util\Routeing\Route;
 
 class AdminController extends BaseController
@@ -14,17 +15,17 @@ class AdminController extends BaseController
 
     }
 
-    #[Route('/editMenu')]
+    #[Route('/addNewItem')]
     public function index(): void
     {
-        $this->render('editMenu');
+        $this->render('addNewItem', ["method" => "Add new pizza to the menu"]);
     }
 
-    #[Route('/editMenu', 'POST')]
+    #[Route('/addNewItem', 'POST')]
     public function postTest(array $params): void
     {
-        print "<h1>POST EXECUTED</h1>";
-        print_r($params);
-        $this->render('editMenu');
+        $pizza = new Pizza($params['name'], $params['description'], (int)$params['price'], $params['picture']);
+        $pizza->addNewPizza();
+        $this->render('addNewItem', ["method" => $params['name'] . " successfully added to the menu"]);
     }
 }

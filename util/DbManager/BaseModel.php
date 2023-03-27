@@ -40,15 +40,28 @@ class BaseModel
         return $array;
     }
 
-    /**
-     * @return int Az adott rekord IDját dobja vissza
-     */
     protected function Create(): int
+    {
+        $className = $this->getClassName();
+
+        return (int)DB::getInstance()->insert($className, $this->getParamsArray());
+    }
+
+    private function getClassName(): string
     {
         $className = get_class($this);
         $className = explode('\\', $className);
-        $className = end($className);
+        return end($className);
+    }
 
-        return (int)DB::getInstance()->insert($className, $this->getParamsArray());
+    protected function getAll(): array
+    {
+        $array = [];
+        $objects = DB::getInstance()->query("select * from {$this->getClassName()}")->results();
+        foreach ($objects as $key => $value) {
+
+            $array[] = json_decode(json_encode($value), true);
+        }
+        return $array;
     }
 }

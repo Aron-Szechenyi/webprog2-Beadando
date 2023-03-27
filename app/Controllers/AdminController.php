@@ -6,7 +6,7 @@ namespace App\Controllers;
 
 use Util\Routeing\Route;
 
-class OrderController extends BaseController
+class AdminController extends BaseController
 
 {
     public function __construct()
@@ -14,17 +14,17 @@ class OrderController extends BaseController
 
     }
 
-    #[Route('/menu')]
+    #[Route('/editMenu')]
     public function index(): void
     {
-        $this->render('menu');
+        $this->render('editMenu');
     }
 
-    #[Route('/menu', 'POST')]
+    #[Route('/editMenu', 'POST')]
     public function postTest(array $params): void
     {
         print "<h1>POST EXECUTED</h1>";
         print_r($params);
-        $this->render('index');
+        $this->render('editMenu');
     }
 }

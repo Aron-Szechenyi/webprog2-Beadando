@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `User`
 --  user-user
 INSERT INTO `User` (`Username`, `Password`, `Email`, `Role`)
 VALUES ('root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 'test@test.test', 'admin');
-VALUES ('user', '04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb', 'test@test.test');
 
 INSERT INTO `User` (`Username`, `Password`, `Email`)
 VALUES ('user', '04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb', 'test@test.test');

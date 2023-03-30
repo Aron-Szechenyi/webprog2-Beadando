@@ -1,0 +1,13 @@
+.card {
+    background: #222;
+    margin-bottom: 2rem;
+    width: 18rem;
+}
+
+.card-button {
+    width: 100%;
+}
+
+#cards {
+    padding-top: 50px;
+}

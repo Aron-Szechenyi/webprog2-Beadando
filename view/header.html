@@ -1,19 +1,14 @@
 <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid" id="nav">
-        <a class="navbar-brand" id="nav-a">πzzéria</a>
-        <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-                class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse"
-                type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+        <a class="navbar-brand" href="/" id="nav-a">πzzéria</a>
+        <nav id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" href="/">Home</a>
                 </li>
                 {! if isAdmin == true !}
                 <li class="nav-item">
-                    <a class="nav-link active" href="/addNewItem">addNewItem</a>
+                    <a class="nav-link active" href="/addNewItem">Add new item</a>
                 </li>
                 {! else !}
                 {! endif !}
@@ -24,7 +19,7 @@
                 <li class="nav-item">
                     <form action="/logout" method="POST">
                         <input name="param1" type="hidden" value="val"/>
-                        <a class="nav-link active" href="#" onclick="this.parentNode.submit()">logout</a>
+                        <a class="nav-link active" href="#" onclick="this.parentNode.submit()">Logout</a>
                     </form>
                 </li>
                 {! else !}
@@ -39,6 +34,6 @@
                 </li>
                 {! endif !}
             </ul>
-        </div>
+        </nav>
     </div>
 </nav>

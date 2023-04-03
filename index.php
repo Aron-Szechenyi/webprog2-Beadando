@@ -8,7 +8,7 @@ use App\Controllers\AdminController;
 use App\Controllers\AuthenticationController;
 use App\Controllers\HomeController;
 use App\Controllers\OrderController;
-use Util\Routeing\Router;
+use Util\Routing\Router;
 
 include_once "vendor/autoload.php";
 

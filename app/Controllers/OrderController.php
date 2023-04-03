@@ -6,7 +6,7 @@ namespace App\Controllers;
 
 use App\Models\Pizza;
 use ReflectionClass;
-use Util\Routeing\Route;
+use Util\Routing\Route;
 
 class OrderController extends BaseController
 {

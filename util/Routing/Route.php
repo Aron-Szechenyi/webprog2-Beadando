@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Util\Routeing;
+namespace Util\Routing;
 
 #[\Attribute]
 class Route

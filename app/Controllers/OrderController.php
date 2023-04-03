@@ -9,13 +9,7 @@ use ReflectionClass;
 use Util\Routeing\Route;
 
 class OrderController extends BaseController
-
 {
-    public function __construct()
-    {
-
-    }
-
     #[Route('/menu')]
     public function index(): void
     {

@@ -8,13 +8,7 @@ use App\Models\Pizza;
 use Util\Routeing\Route;
 
 class AdminController extends BaseController
-
 {
-    public function __construct()
-    {
-
-    }
-
     #[Route('/addNewItem')]
     public function index(): void
     {

@@ -8,14 +8,8 @@ use App\Models\User;
 use Util\Routeing\Route;
 
 class AuthenticationController extends BaseController
-
 {
     private User $user;
-
-    public function __construct()
-    {
-
-    }
 
     #[Route('/register', 'POST')]
     public function registerPost(array $params): void

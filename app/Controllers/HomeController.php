@@ -7,13 +7,7 @@ namespace App\Controllers;
 use Util\Routeing\Route;
 
 class HomeController extends BaseController
-
 {
-    public function __construct()
-    {
-
-    }
-
     #[Route('/')]
     public function index(): void
     {

@@ -20,6 +20,4 @@ class BaseController
     {
         header("Location: $url");
     }
-
-
 }

@@ -17,13 +17,12 @@ class Pizza extends BaseModel
 
     public function __construct(string $name, string $description, int $price, string $picture = 'pizza.png', int|null $id = null)
     {
-        $this->name = $name;
-        $this->price = $price;
-        $this->picture = $picture;
-        $this->description = $description;
 
-        if (!empty($id))
-            $this->id = $id;
+    }
+
+    public function getAllPizza(): array
+    {
+        return $this->getAll();
     }
 
     public function addNewPizza(): bool
@@ -32,10 +31,5 @@ class Pizza extends BaseModel
         if (!empty($this->id))
             return true;
         return false;
-    }
-
-    public function getAllPizza(): array
-    {
-        return $this->getAll();
     }
 }

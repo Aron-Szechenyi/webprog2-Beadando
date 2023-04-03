@@ -16,7 +16,7 @@ class BaseController
         $view->render($view_name, $params, $booleans);
     }
 
-    public function redirectToUrl(string $url, array $params = [], array $booleans = []): void
+    public function redirectToUrl(string $url): void
     {
         header("Location: $url");
     }
